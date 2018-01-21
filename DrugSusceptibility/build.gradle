@@ -1,0 +1,46 @@
+
+// Apply the java-library plugin to add support for Java Library
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = "com.drugsusceptibilty.connectionToDB.getMongo"
+// In this section you declare where to find the dependencies of your project
+repositories {
+
+    jcenter()
+   
+}
+
+dependencies {
+    
+	
+	//Dependency for connecting to MongoDB
+	compile 'org.mongodb:mongodb-driver:3.4.2' 
+	
+	
+
+    // Use JUnit test framework
+    //testImplementation 'junit:junit:4.12'
+    
+    
+}
+
+task mongo(type:JavaExec, dependsOn:run) {
+
+classpath = sourceSets.main.runtimeClasspath
+
+main = "com.drugsusceptibilty.connectionToDB.getMongo"
+
+}
+
+task wrapper(type: Wrapper){
+gradleVersion='2.10'
+}
+
+run{
+standardInput=System.in;
+}
+
+
+
+
